@@ -8,11 +8,13 @@ class Rectangle{
     }
     print(){
         for (let i = 0; i < this.height; i++){
-            let k = '';
+            k = '';
+            for (let j = 0; j < this.width; j++){
+                k += 'X';
+            }
         }
-        for (let j = 0; j < this.width; j++){
-            k += 'X';
-        }
+        console.log(k)
+        
     }
     
 }

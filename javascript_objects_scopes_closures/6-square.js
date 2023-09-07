@@ -1,19 +1,18 @@
 
-const SquareX = require("./5-square");
+const Square = require("./5-square");
 
-class Square extends SquareX{
-    charPrint(c){
-        if (typeof c === undefined){
-            c = 'X';
+class SquareX extends Square {
+    charPrint(c) {
+      if (typeof c === "undefined") {
+        c = "X";
+      }
+      for (let i = 0; i < this.height; i++){
+        let k = '';
+        for (let j = 0; j < this.width;j++){
+            k += 'X';
         }
-        for (let i = 0; i < this.height; i++){
-            let k = '';
-            for (let j = 0; j < this.width; j++){
-                k += 'C';
-            }
-            console.log(k);
+        console.log(k);
         }
-        
     }
-}
+  }
 module.exports = Square;

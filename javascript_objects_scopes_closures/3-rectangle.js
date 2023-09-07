@@ -13,8 +13,7 @@ class Rectangle{
                 k += 'X';
             }
         }
-        console.log(k)
-        
+        console.log(k);
     }
     
 }

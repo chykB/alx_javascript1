@@ -9,7 +9,7 @@ class Square extends SquareX{
         for (let i = 0; i < this.height; i++){
             let k = '';
             for (let j = 0; j < this.width; j++){
-                k += 'c';
+                k += 'C';
             }
             console.log(k);
         }

@@ -6,6 +6,6 @@ request.get(url)
     .then((response)=>{
         console.log(`code: &{response.status}`)
     })
-    .catch((errror) => {
+    .catch((error) => {
         console.error(error.message)
     })

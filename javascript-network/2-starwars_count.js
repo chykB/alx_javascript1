@@ -2,6 +2,7 @@
 const request = require('request');
 const apiUrl = process.argv[2];
 const characterId = 18;
+let count = 0;
 
 request.get(apiUrl, (error, response, body) => {
     if (error){
@@ -9,14 +10,14 @@ request.get(apiUrl, (error, response, body) => {
     }else if (response.statusCode !== 200){
         console.error(response.statusCode);
     }else {
-        try {
-            const movie = JSON.parse(body);
-            const WedgeAntillesMovies = movie.results.filter((film) =>
-                film.characters.includes(characterId));
-            console.log(`${WedgeAntillesMovies.length}`);
-
-        }catch(parseError){
-            console.error(parseError.message);
-        }
+        const movieData = JSON.parse(body)
+        movieData.results.forEach((film) => {
+            film.characters.forEach((character) => {
+                if (character.includes(characterId)){
+                    count += 1;
+                }
+            })
+        })
+        console.log(count);
     }
 });

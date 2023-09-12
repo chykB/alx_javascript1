@@ -11,9 +11,8 @@ request.get(apiUrl, (error, response, body) => {
     }else {
         try {
             const movie = JSON.parse(body);
-            const WedgeAntillesMovies = movie.results.filter((film) => {
-                film.characters.includes(`https://swapi-api.alx-tools.com/api/${characterId}/`)
-            });
+            const WedgeAntillesMovies = movie.results.filter((film) =>
+                film.characters.includes(characterId));
             console.log(`${WedgeAntillesMovies.length}`);
 
         }catch(parseError){

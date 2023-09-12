@@ -2,10 +2,11 @@
 const request = require('request');
 const url = process.argv[2];
 
-request.get(url)
-    .then((response)=>{
-        console.log(`code: &{response.status}`)
-    })
-    .catch((error) => {
-        console.error(error.message)
-    })
+request.get(url, (error, response) => {
+    if (error){
+        console.error(error.message);
+    }else {
+        console.log(`code: ${response.statusCode}`);
+    }
+});
+    

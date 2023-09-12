@@ -8,11 +8,10 @@ request.get(url, (error, response, body) => {
     if (error){
         console.log(error);
     }else {
-        fs.writeFile(path, body, 'utf-8', writeError => {
+        fs.writeFile(path, body, 'utf-8', (writeError) => {
             if (writeError){
                 console.log(writeError)
             }
-            console.log(`${path}`);
         })
     }
 })

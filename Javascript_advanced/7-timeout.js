@@ -1,4 +1,3 @@
-#!/usr/bin/node
 console.log('Start of the execution queue');
 
 setTimeout(function(){

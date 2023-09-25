@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" placeholder="firstname">
+    <input type="text" id="email" placeholder="email">
+    <button id="login">Log me in</button>
+    <h1>Cookies</h1>
+    <button onclick="showCookies()">Show the cookies</button>
+
+<script src="
+https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
+"></script>
+<script>
+    let login = document.getElementById('login');
+    login.addEventListener('click', setCookies);
+
+    function setCookies(){
+        let firstname = document.getElementById('firstname').value;
+        let email = document.getElementById('email').value;
+        
+        document.cookie = `firstname=${firstname}`;
+        document.cookie = `email=${email}`;
+
+    }
+    function showCookies(){
+        let cookies = document.cookie.split('; ');
+        let paragraph = document.createElement('p');
+        paragraph.innerHTML = 'Cookies: ';
+        for (let a = 0; a < cookies.length; a++){
+            let cookie = cookies[a];
+            if (cookie.startsWith('firstname=') || cookie.startsWith('email=')){
+                paragraph.innerHTML += cookie.split('=')[1] + ', ';
+            }
+        }
+        paragraph.innerHTML = paragraph.innerHTML.slice(0, -2);
+        document.body.appendChild(paragraph)
+    }
+</script>
+</body>
+</html>

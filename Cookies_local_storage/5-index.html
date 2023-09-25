@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h1>Available Products:</h1>
+    <ul id="items"></ul>
+
+    <h2>Your Cart:</h2>
+    <p id="cart-message"></p>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
+"></script>
+
+    <script>
+     
+        const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+        function addItemToCart(item) {
+            localStorage.setItem(item, true);
+            displayCart();
+        }
+
+
+        function createStore() {
+            const ul = document.createElement("ul");
+            const itemsList = document.getElementById("items");
+
+            for (const item of availableItems) {
+                const li = document.createElement("li");
+                li.textContent = item;
+                li.addEventListener("click", () => addItemToCart(item));
+                ul.appendChild(li);
+            }
+
+            itemsList.appendChild(ul);
+        }
+
+
+        function displayCart() {
+            const cartMessage = document.getElementById("cart-message");
+            const keys = Object.keys(localStorage);
+
+            if (keys.length === 0) {
+                cartMessage.textContent = "";
+            } else {
+                const cartCount = keys.length;
+                cartMessage.textContent = `You previously had ${cartCount} item(s) in your cart.`;
+            }
+        }
+
+        if (typeof(Storage) === "undefined") {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one.");
+        } else {
+            createStore();
+            displayCart();
+        }
+    </script>
+</body>
+</html>
